@@ -2,6 +2,15 @@
 
 ## Getting Started
 
+To run these functions with Cape, you need to first install the [Cape CLI](https://github.com/capeprivacy/cli).
+
+### Cape login
+
+Log into Cape by running:
+```
+cape login
+```
+
 ### Cape Deploy
 
 Deploys a `function_dir` to Cape. Returns a `function_id`.
