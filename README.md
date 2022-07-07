@@ -50,3 +50,8 @@ cape deploy isprime
 ```
 cape run 28028ae0-cf5c-47f8-8e8e-0da42b6dc142 input.isprime.data
 ```
+
+### np-stats
+A simple example with numpy dependencies and `pycape.io_serialize` decorator to deserialize/serialize the input and output of a cape function.
+
+
