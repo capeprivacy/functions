@@ -1,9 +1,8 @@
-import json
-from os import lseek
 import numpy as np
 
+from pycape import io_serialize
+
+
+@io_serialize
 def cape_handler(x):
-    data  =  np.array([1, 2, 3 , 4])
-    mean = np.mean(data)
-    res_json  = json.dumps(mean.tolist()).encode()
-    return res_json
+    return x + np.ones(4)
