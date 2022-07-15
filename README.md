@@ -19,6 +19,21 @@ Deploys a `function_dir` to Cape. Returns a `function_id`.
 cape deploy <function_dir>
 ```
 
+#### Deploying on Windows
+
+If you are on Windows (or as an alternative to deploying the function as a directory) you can create a zip file and deploy it directly. This will fix issues you may run into with relative paths.
+
+```
+tar.exe -a -c -f <function_name>.zip <function_div>
+cape deploy <function_name>.zip
+```
+
+Example:
+```
+tar.exe -a -c -f echo.zip echo
+cape deploy echo.zip
+```
+
 ### Cape Run
 
 Runs a cape function by `function_id` and `input_file`. Returns a `result`.
@@ -74,7 +89,7 @@ $ # Add PyCape dependencies
 $ pip install -r pycape/requirements.txt --target np-stats-deployment/
 ```
 
-**Deploy the function:** 
+**Deploy the function:**
 
 Deploy with the CLI the function as follow:
 ```
@@ -85,5 +100,5 @@ cape deploy np-stats-deployment --url wss://hackathon.capeprivacy.com --insecure
 You can run the function  with PyCape as follow:
 ```
 export CAPE_FUNCTION="<YOUR FUNCTION ID>"
-python np-stats/run.py 
+python np-stats/run.py
 ```
