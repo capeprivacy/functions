@@ -1,8 +1,10 @@
 import numpy as np
 
-from pycape import io_serialize
+import pycape
 
 
-@io_serialize
-def cape_handler(x):
+@pycape.lift_io
+def add_ones(x: np.ndarray) -> np.ndarray:
     return x + np.ones(4)
+
+cape_handler = add_ones.as_cape_handler()
