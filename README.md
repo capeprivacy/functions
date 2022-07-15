@@ -19,19 +19,17 @@ Deploys a `function_dir` to Cape. Returns a `function_id`.
 cape deploy <function_dir>
 ```
 
+Example:
+```
+cape deploy echo
+```
+
 #### Deploying on Windows
 
 If you are on Windows (or as an alternative to deploying the function as a directory) you can create a zip file and deploy it directly. This will fix issues you may run into with relative paths.
 
 ```
-tar.exe -a -c -f <function_name>.zip <function_div>
 cape deploy <function_name>.zip
-```
-
-Example:
-```
-tar.exe -a -c -f echo.zip echo
-cape deploy echo.zip
 ```
 
 ### Cape Run
@@ -53,7 +51,7 @@ cape deploy echo
 ```
 
 ```
-cape run 4b4961ef-1f04-4027-850a-3fd39a9501f2 input.echo.data
+cape run 4b4961ef-1f04-4027-850a-3fd39a9501f2 -f input.echo.data
 ```
 
 ### isprime
@@ -63,7 +61,7 @@ cape deploy isprime
 ```
 
 ```
-cape run 28028ae0-cf5c-47f8-8e8e-0da42b6dc142 input.isprime.data
+cape run 28028ae0-cf5c-47f8-8e8e-0da42b6dc142 -f input.isprime.data
 ```
 
 ### np-stats
