@@ -1,8 +1,9 @@
 import os
 
+import numpy as np
 from pycape import Cape
 
-import numpy as np
+import numpy_serde as serde
 
 if __name__ == "__main__":
     token = os.environ.get("CAPE_TOKEN", None)
@@ -13,6 +14,6 @@ if __name__ == "__main__":
 
     cape = Cape(url=url, access_token=token)
     x = np.array([1, 2, 3, 4])
-    result = cape.run(function_id, x, msgpack_serialize=True)
+    result = cape.run(function_id, x, serde_hooks=(serde.encoder, serde.decoder), use_serdio=True)
 
     print(f"The result is: {result}")

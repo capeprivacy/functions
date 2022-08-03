@@ -65,26 +65,26 @@ cape run 28028ae0-cf5c-47f8-8e8e-0da42b6dc142 -f input.isprime.data
 ```
 
 ### np-stats
-A simple example with numpy dependencies and `pycape.io_serialize` decorator to deserialize/serialize the input and output of a cape function.
+A simple example with numpy dependencies and using `serdio.lift_io` to handle automatic serialization/deserialization of Cape function input/outputs. All commands are run from the repo root directory. 
 
-In the instruction below we add the PyCape depedency by cloning it which is really ugly, but in bad we should simplify the process by having PyCape
-already installed in the EIF. Also releasing PyCape on PyPI should improve the process.
+Note the `numpy_serde.py` helper, which defines a custom encoder/decoder bundle that allows `serdio` to handle numpy arrays.
+
+In the instructions below we add the Serdio depedency by cloning PyCape, which isn't ideal.  Releasing Serdio on PyPI would improve the process.
 
 **Build the deployment package:**
 
-```
-$ mkdir np-stats-deployment
-$ cp np-stats/app.py np-stats-deployment/.
-$ # Clone pycape to add it as dependency (very ugly) until PyCape is released on pypi or pre-install in the EIF.
-$ git clone https://github.com/capeprivacy/pycape.git
-$ cp -r pycape/pycape np-stats-deployment/
-$ # Install dependencies using docker
-$ docker run -v `pwd`:/build --rm -it --entrypoint /bin/bash python:3.9-slim-bullseye
-$ cd /build/
-$ # Add example dependencies
-$ pip install -r np-stats/requirements.txt --target np-stats-deployment/
-$ # Add PyCape dependencies
-$ pip install -r pycape/requirements.txt --target np-stats-deployment/
+```bash
+mkdir np-stats-deployment
+cp np-stats/app.py np-stats-deployment/.
+# Clone pycape in preparation of adding serdio dependency
+git clone https://github.com/capeprivacy/pycape.git
+# Install dependencies using docker
+docker run -v `pwd`:/build --rm -it --entrypoint /bin/bash python:3.9-slim-bullseye
+cd /build/
+# Add serdio dependency
+pip install pycape/serdio --target np-stats-deployment/
+# Add example dependencies
+pip install -r np-stats/requirements.txt --target np-stats-deployment/
 ```
 
 **Deploy the function:**
