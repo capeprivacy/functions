@@ -70,18 +70,6 @@ A simple example with numpy dependencies and `pycape.io_serialize` decorator to 
 In the instruction below we add the PyCape depedency by cloning it which is really ugly, but in bad we should simplify the process by having PyCape
 already installed in the EIF. Also releasing PyCape on PyPI should improve the process.
 
-### secure_search
-
-Simulates a cybersecurity search function, where the IP addresses you are interested in need to remain private but the data/logs you are searching might be public. The function defines selectors (IP addresses of interest) as variables, and accepts a list of json objects containing IP addresses in a "hosts" element. It will return True or False for each selector that you are interested in, for each object in the json list. Optionally, you can use a user-supplied public key to encrypt the results prior to returning them to the caller.
-
-```
-cape deploy secure_search
-```
-
-```
-cape run VRPYt53Z79JeQFGZZhE2nb -f input.search.data
-```
-
 **Build the deployment package:**
 
 ```
@@ -111,4 +99,16 @@ You can run the function  with PyCape as follow:
 ```
 export CAPE_FUNCTION="<YOUR FUNCTION ID>"
 python np-stats/run.py
+```
+
+### secure_search
+
+Simulates a cybersecurity search function, where the IP addresses you are interested in need to remain private but the data/logs you are searching might be public. The function defines selectors (IP addresses of interest) as variables, and accepts a list of json objects containing IP addresses in a "hosts" element. It will return True or False for each selector that you are interested in, for each object in the json list. Optionally, you can use a user-supplied public key to encrypt the results prior to returning them to the caller.
+
+```
+cape deploy secure_search
+```
+
+```
+cape run VRPYt53Z79JeQFGZZhE2nb -f input.search.data
 ```
