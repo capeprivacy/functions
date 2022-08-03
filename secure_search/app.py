@@ -4,7 +4,7 @@ from tink import hybrid
 from tink import JsonKeysetReader
 from tink import cleartext_keyset_handle
 
-# "selectors" are the strings to search for
+# "selectors" are the strings to search for (you can customize these)
 selectors_a = "172.19.0.4"
 selectors_b = "1.2.3.4"
 
@@ -37,4 +37,8 @@ def cape_handler(input):
 
     finds = list(map(find, req))
 
-    return encrypt(finds)
+    # return results in plaintext
+    return finds
+
+    # alternatively, use this to encrypt the results with the supplied public key
+    #return encrypt(finds)
