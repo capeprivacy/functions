@@ -75,7 +75,7 @@ In the instructions below we add the Serdio depedency by cloning PyCape, which i
 
 ```bash
 mkdir np-stats-deployment
-cp np-stats/app.py np-stats-deployment/.
+cp np-stats/app.py np-stats/numpy_serde.py np-stats-deployment/.
 # Clone pycape in preparation of adding serdio dependency
 git clone https://github.com/capeprivacy/pycape.git
 # Install dependencies using docker
