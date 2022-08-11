@@ -64,8 +64,18 @@ cape deploy isprime
 cape run 28028ae0-cf5c-47f8-8e8e-0da42b6dc142 -f input.isprime.data
 ```
 
+### mobilenet
+
+```
+cape deploy mobilenet
+```
+
+```
+cape run nEeVVSW5faK66prUihxhEw -f input.dog_segmentation.bmp
+```
+
 ### np-stats
-A simple example with numpy dependencies and using `serdio.lift_io` to handle automatic serialization/deserialization of Cape function input/outputs. All commands are run from the repo root directory. 
+A simple example with numpy dependencies and using `serdio.lift_io` to handle automatic serialization/deserialization of Cape function input/outputs. All commands are run from the repo root directory.
 
 Note the `numpy_serde.py` helper, which defines a custom encoder/decoder bundle that allows `serdio` to handle numpy arrays.
 

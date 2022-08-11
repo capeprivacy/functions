@@ -1,0 +1,15 @@
+tflite_runtime-2.9.1.dist-info/INSTALLER,sha256=zuuue4knoyJ-UwPPXg8fezS7VCrXJQrAP7zeNuwvFQg,4
+tflite_runtime-2.9.1.dist-info/METADATA,sha256=zBXeAj3otSE4R89pBwmqikuVgGWczMaw8c4DrExeoMI,1368
+tflite_runtime-2.9.1.dist-info/RECORD,,
+tflite_runtime-2.9.1.dist-info/REQUESTED,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+tflite_runtime-2.9.1.dist-info/WHEEL,sha256=2qRqmgRpP_uIyr-c9f5_lz_BAdFqI_Jq82iXqmMuUeU,111
+tflite_runtime-2.9.1.dist-info/top_level.txt,sha256=uNbSt_JkE5qb43UeqR4Wx6_Y6A5613g6gtS49welF08,15
+tflite_runtime/__init__.py,sha256=Kp5YspKJkckYAmjyHlT7xxWzJQY-rCzRt54CbGyYnvk,68
+tflite_runtime/__pycache__/__init__.cpython-39.pyc,,
+tflite_runtime/__pycache__/interpreter.cpython-39.pyc,,
+tflite_runtime/__pycache__/metrics_interface.cpython-39.pyc,,
+tflite_runtime/__pycache__/metrics_portable.cpython-39.pyc,,
+tflite_runtime/_pywrap_tensorflow_interpreter_wrapper.so,sha256=ow696bFR6Af0v7IMz2uZlGCNIv6DIPRLSh3RFGqyVjA,6624384
+tflite_runtime/interpreter.py,sha256=fHPF1GpaI4OIPrUDf4XyJKGEDVjPnWld-H_hNpnOyxY,37453
+tflite_runtime/metrics_interface.py,sha256=dVu6SmbnQUntPgE5o6BxHVMyemwli-7F6tDfVMGrlYI,1542
+tflite_runtime/metrics_portable.py,sha256=YBiMNokP9JtoQaUcCRRY1T_iFSZGeWCjr6L0iUR6eY8,2048
