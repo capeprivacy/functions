@@ -13,7 +13,7 @@ You would first have to deploy the function:
 cape deploy function/ --url "wss://hackathon.capeprivacy.com"
 ```
 
-Then update the function hash and function id with the output in gossip_protocol.py file.
+Then update the function hash and function id with when starting up the nodes.
 
 Generate the crypto content (in python) and run:
 ``` python
@@ -39,7 +39,7 @@ executes the proper logic. Instead of relying on each node deciding who the lead
 the enclave for this gurantee.
 
 A simple example would be for `node A` to gossip and update the list of active nodes it knows. 
-It would send this data encrypted with the enclave's public key to make sure only the enclave can decrypt the message (did not get to)
+It would send this data encrypted with the enclave's public key to make sure only the enclave can decrypt the message (not implemented)
 Next the enclave would sign the result and would return both the signature and orginal value. 
 
 This new value is now trusted to be true given the list of nodes available. 

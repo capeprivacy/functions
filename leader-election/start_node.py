@@ -17,6 +17,6 @@ if __name__ == "__main__":
     args = vars(parser.parse_args())
     print(args)
     node = GossipNode(args["p"], 
-                      connected_node = list(map(int, args["node_list"])),
+                      connected_nodes = list(map(int, args["node_list"])),
                       function_ref=FunctionRef(function_id=args["f"],
                                                function_hash=args["fh"]))
