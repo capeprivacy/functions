@@ -1,0 +1,4 @@
+tink==1.6.1
+protobuf==3.20.1
+absl-py==1.0.0
+six==1.14.0

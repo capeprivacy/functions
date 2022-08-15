@@ -1,0 +1,15 @@
+[{
+    "protocol": "tcp",
+    "hosts": "1.2.3.4:29092",
+    "state": "ESTABLISHED"
+},
+{
+    "protocol": "tcp",
+    "hosts": "5.6.7.8:29092",
+    "state": "ESTABLISHED"
+},
+{
+    "protocol": "tcp",
+    "hosts": "1.2.3.4:29092<>172.19.0.4:29092",
+    "state": "ESTABLISHED"
+}]
