@@ -84,11 +84,8 @@ Note the `numpy_serde.py` helper, which defines a custom encoder/decoder bundle 
 ```bash
 mkdir np-stats-deployment
 cp np-stats/app.py np-stats/numpy_serde.py np-stats-deployment/.
-# Install dependencies using docker
-docker run -v `pwd`:/build --rm -it --entrypoint /bin/bash python:3.9-slim-bullseye
-cd /build/
-# Add serdio and numpy dependencies
-pip install -r np-stats/requirements.txt --target np-stats-deployment/
+# Add serdio and numpy dependencies using docker
+docker run -v `pwd`:/build -w /build --rm -it python:3.9-slim-bullseye pip install -r np-stats/requirements.txt --target np-stats-deployment/
 ```
 
 **Deploy the function:**
