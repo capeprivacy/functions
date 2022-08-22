@@ -102,7 +102,7 @@ cape deploy np-stats-deployment
 You can run the function  with PyCape as follow:
 ```
 export CAPE_FUNCTION_ID="<YOUR FUNCTION ID>"
-export CAPE_FUNCTION_HASH="<YOUR FUNCTION ID>"
+export CAPE_FUNCTION_HASH="<YOUR FUNCTION HASH>"
 python np-stats/run.py
 ```
 
