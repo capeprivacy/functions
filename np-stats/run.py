@@ -8,7 +8,6 @@ import numpy_serde as serde
 
 if __name__ == "__main__":
     token = os.environ.get("CAPE_TOKEN", None)
-    url = os.environ.get("CAPE_HOST", "wss://enclave.capeprivacy.com")
     function_id = os.environ.get("CAPE_FUNCTION_ID", "bQyv2fbtyJukqx6fUhxMpW")
     function_hash = os.environ.get(
         "CAPE_FUNCTION_HASH",
@@ -20,7 +19,7 @@ if __name__ == "__main__":
     else:
         function_ref = FunctionRef(function_id, function_hash)
 
-    cape = Cape(url=url, access_token=token)
+    cape = Cape(access_token=token)
     x = np.array([1, 2, 3, 4])
     f = FunctionRef(function_id, function_hash)
     result = cape.run(f, x, serde_hooks=(serde.encoder, serde.decoder), use_serdio=True)
