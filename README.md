@@ -79,35 +79,27 @@ A simple example with numpy dependencies and using `serdio.lift_io` to handle au
 
 Note the `numpy_serde.py` helper, which defines a custom encoder/decoder bundle that allows `serdio` to handle numpy arrays.
 
-In the instructions below we add the Serdio depedency by cloning PyCape, which isn't ideal.  Releasing Serdio on PyPI would improve the process.
-
 **Build the deployment package:**
 
 ```bash
 mkdir np-stats-deployment
 cp np-stats/app.py np-stats/numpy_serde.py np-stats-deployment/.
-# Clone pycape in preparation of adding serdio dependency
-git clone https://github.com/capeprivacy/pycape.git
-# Install dependencies using docker
-docker run -v `pwd`:/build --rm -it --entrypoint /bin/bash python:3.9-slim-bullseye
-cd /build/
-# Add serdio dependency
-pip install pycape/serdio --target np-stats-deployment/
-# Add example dependencies
-pip install -r np-stats/requirements.txt --target np-stats-deployment/
+# Add serdio and numpy dependencies using docker
+docker run -v `pwd`:/build -w /build --rm -it python:3.9-slim-bullseye pip install -r np-stats/requirements.txt --target np-stats-deployment/
 ```
 
 **Deploy the function:**
 
 Deploy with the CLI the function as follow:
 ```
-cape deploy np-stats-deployment --url wss://hackathon.capeprivacy.com --insecure
+cape deploy np-stats-deployment
 ```
 
 **Run the function:**
 You can run the function  with PyCape as follow:
 ```
-export CAPE_FUNCTION="<YOUR FUNCTION ID>"
+export CAPE_FUNCTION_ID="<YOUR FUNCTION ID>"
+export CAPE_FUNCTION_HASH="<YOUR FUNCTION HASH>"
 python np-stats/run.py
 ```
 
