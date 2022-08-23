@@ -74,6 +74,31 @@ cape deploy mobilenet
 cape run nEeVVSW5faK66prUihxhEw -f input.dog_segmentation.bmp
 ```
 
+### pendulum
+In this example, we show how to run a function requiring a dependency. The function simply returns the current time based on a specific timezone using the [Pendulum](https://pendulum.eustace.io/) library. The dependency is listed in `pendulum/requirements.txt`.
+
+**Build the deployment package:**
+```
+# Create a deployment folder
+mkdir pendulum-deployment
+# Copy the cape function in the deployment folder
+cp pendulum/app.py pendulum-deployment/.
+# Add pendulum as dependencies using docker
+docker run -v `pwd`:/build -w /build --rm -it python:3.9-slim-bullseye pip install -r pendulum/requirements.txt --target pendulum-deployment/
+```
+**Deploy the function:**
+
+Deploy with the CLI the function as follow:
+```bash
+ cape deploy pendulum-deployment/
+```
+
+**Run the function:**
+You can run the function with the cli as follow. Just make sure to use the function id returned by `cape deploy`.
+```
+cape run 2zbK8Fong64smU2GVuFMmS Europe/Paris 
+```
+
 ### np-stats
 A simple example with numpy dependencies and using `serdio.lift_io` to handle automatic serialization/deserialization of Cape function input/outputs. All commands are run from the repo root directory.
 
@@ -96,7 +121,7 @@ cape deploy np-stats-deployment
 ```
 
 **Run the function:**
-You can run the function  with PyCape as follow:
+You can run the function with PyCape as follow:
 ```
 export CAPE_FUNCTION_ID="<YOUR FUNCTION ID>"
 export CAPE_FUNCTION_HASH="<YOUR FUNCTION HASH>"
