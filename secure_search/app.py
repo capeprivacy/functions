@@ -1,8 +1,5 @@
 import json
-import tink
-from tink import hybrid
-from tink import JsonKeysetReader
-from tink import cleartext_keyset_handle
+import hybrid_pke
 
 # "selectors" are the strings to search for (you can customize these)
 selectors_a = "172.19.0.4"
@@ -17,13 +14,14 @@ def cape_handler(input):
     req = json.loads(as_str)
 
     def encrypt(input):
-        hybrid.register()
-        with open('public_keyset.json', 'rt') as keyset_file:
-            text = keyset_file.read()
-            public_keyset_handle = cleartext_keyset_handle.read(tink.JsonKeysetReader(text))
-            encrypt = public_keyset_handle.primitive(hybrid.HybridEncrypt)
-            ciphertext = encrypt.encrypt(bytes(json.dumps(input), 'utf-8'), b'')
-            return ciphertext
+        hpke = hybrid_pke.default()
+        with open('public_keyset.bin', 'rb') as key_bytes:
+            key = key_bytes.read()
+            info = b""
+            aad = b""
+            encap, ciphertext = hpke.seal(key, info, aad, bytes(json.dumps(input), 'utf-8'))
+
+        return encap + ciphertext
 
     def find(input):
         a = False
@@ -38,7 +36,7 @@ def cape_handler(input):
     finds = list(map(find, req))
 
     # return results in plaintext
-    return finds
+    # return finds
 
     # alternatively, use this to encrypt the results with the supplied public key
-    #return encrypt(finds)
+    return encrypt(finds)
