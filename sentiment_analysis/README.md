@@ -6,7 +6,7 @@ This application performs secure sentiment analysis using a tflite model
 
 ### Prepare deployment folder with dependencies
 ```
-sudo docker run -v `pwd`:/build -w /build --rm -it python:3.9-slim-bullseye pip install -r requirements.txt --target ./deploy/
+sudo docker run -v `pwd`:/build -w /build --rm -it python:3.9-slim-bullseye pip install -r requirements.txt --target ./app/
 ```
 
 ### Deploy and run with Cape
@@ -20,7 +20,7 @@ Your access token: eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlVkb21jZkdEejZKV
 ```
 
 ```
-cape deploy ./deploy
+cape deploy ./app
 
 Deploying function to Cape ...
 Success! Deployed function to Cape
