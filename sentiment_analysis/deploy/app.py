@@ -66,11 +66,6 @@ def cape_handler(text):
         result = "positive"
     else:
         result = "negative"
-    return (
-        "The sentiment is: ",
-        result,
-        " with a probability of ",
-        output_data[0][output_result] * 100,
-        "%.",
-    )
     
+    prob = output_data[0][output_result] * 100
+    return (str(float(f'{prob:.2f}')) + "% " + result) or "You've stumped me! Please try a different phrase."
