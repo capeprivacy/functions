@@ -16,16 +16,20 @@ def decrypt(ciphertext):
 
     return plaintext
 
-client = Cape(url="wss://enclave.capeprivacy.com")
+# Cape search function info
 function_id = "Jzv8Ksmqdf9n6za5s6qWiD"
-function_hash = "a50e20e91434e66fe0aa576daf5f3366855bcb79fcb07419efe71c63ba995263"
-f = FunctionRef(function_id, function_hash)
+function_checksum = "a50e20e91434e66fe0aa576daf5f3366855bcb79fcb07419efe71c63ba995263"
+f = FunctionRef(function_id, function_checksum)
 
-# false for 172.19.0.4; true for 1.2.3.4
-resp_ciphertext = client.run(f, b'[{"protocol": "tcp", "hosts": "1.2.3.4:29092", "state": "ESTABLISHED"}]')
+# connect to Cape function
+client = Cape()
+client.connect(function_id)
 
-# false for both IPs
-#resp_ciphertext = client.run(f, b'[{"protocol": "tcp", "hosts": "0.0.0.0:29092", "state": "ESTABLISHED"}]')
+# TEST 1: false for 172.19.0.4; true for 1.2.3.4
+resp_ciphertext = client.invoke(b'[{"protocol": "tcp", "hosts": "1.2.3.4", "state": "ESTABLISHED"}]')
+
+# TEST 2: false for both IPs
+#resp_ciphertext = client.invoke(b'[{"protocol": "tcp", "hosts": "0.0.0.0", "state": "ESTABLISHED"}]')
 
 print(f'\nResponse from Cape (ciphertext):')
 print(resp_ciphertext)
