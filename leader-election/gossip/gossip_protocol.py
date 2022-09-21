@@ -3,6 +3,7 @@ import random
 import socket
 import time
 from threading import Thread
+import base64
 
 from Crypto.Hash import SHA256
 from Crypto.PublicKey import RSA
@@ -27,6 +28,7 @@ class GossipNode:
         # set the ports of the nodes connected to it as connected nodes
         self.connected_nodes = connected_nodes
         self.all_nodes = [self.port]
+        self.received_votes = {}
 
         print("Node started on port {0}".format(self.port))
         print("Connected nodes =>", self.connected_nodes)
@@ -35,19 +37,32 @@ class GossipNode:
         verifier = PKCS1_v1_5.new(public_key)
 
         self.verifier = verifier
-        self.client = Cape(url="wss://hackathon.capeprivacy.com")
+        self.client = Cape()
+        edges = {}
+        edges["node_list"] = self.connected_nodes
+        edge_info = json.dumps(edges)
+        edge_info = bytes(edge_info, "utf8")
+        encrypted = self.client.encrypt(input=edge_info)
+        base64_encoded_vote = encrypted.decode('utf-8')
+        self.received_votes[str(self.port)] = base64_encoded_vote
         self.start_threads()
 
     def input_message(self):
         while True:
             message_dict = {}
+            message_dict["node"] = self.port
             message_dict["node_list"] = self.all_nodes
+            message_dict["votes"] = self.received_votes
             message_to_send = json.dumps(message_dict)
-            print(message_to_send)
-            user_data = bytes(message_to_send, "utf8")
+
+            leader_message = {}
+            leader_message["node_list"] = self.all_nodes
+            enclave_message = json.dumps(leader_message)
+            print(enclave_message)
+            user_data = bytes(enclave_message, "utf8")
             result = self.client.run(
-                function_ref=self.function_ref,
-                input=user_data,
+                self.function_ref,
+                user_data,
             )
             leader = json.loads(result)
             message = leader["message"].encode("utf-8")
@@ -66,7 +81,9 @@ class GossipNode:
             # call send message method and pass the input message.
             # encode the message into ascii
             send_to = self.connected_nodes.copy()
+            print("sending message to peers now")
             self.transmit_message(message_to_send.encode("ascii"), send_to)
+            print("my current votes", self.received_votes)
             time.sleep(20)
 
     def receive_message(self):
@@ -86,7 +103,16 @@ class GossipNode:
             if address[1] in to_send:
                 print("poisoned sender")
                 to_send.remove(address[1])
-            # GossipNode.infected_nodes.append(address[1])
+
+
+            votes =  nodes["votes"]
+            print("received votes", votes)
+            keys = votes.keys()
+            for i in keys:
+                self.received_votes[i] = votes.get(i)
+            # remove the port(node), from which the message came from,
+            to_send = self.connected_nodes.copy()
+
 
             # sleep for 2 seconds in order to show difference in time
             time.sleep(2)
