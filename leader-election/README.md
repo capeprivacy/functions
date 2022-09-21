@@ -67,6 +67,72 @@ Should only initiate one Cape instance, don't do it in a thread, probably should
 If enclave can maintain some form of state of nodes
 then this would be way more impressive. Next steps would be to figure out the best way of integrating 
 state via part of the data.
-You would get a trusted service with high availability to track alive nodes.
 
+## Achieving state of nodes via using Cape encrypt
+Just having gossip regarding node information is not enough, we want an algorithm which is tamper-proof. 
+
+
+
+## Example
+Total number of nodes in system : 4 
+
+Each node and their view of the system: 
+Node 1: [1, 2, 3, 4] -> [1, 2, 3, 4]
+
+Node 2: [2, 3, 4] -> [1, 2, 3, 4]
+
+Node 3: [2, 3, 4] -> [1, 2, 3, 4]
+
+Node 4: [1, 4] -> [1, 2, 3, 4]
+
+
+Each node encrypts their view and send it 
+
+After one round of gossip
+
+Node 1: [1: [1, 2, 3, 4], 2: [2, 3, 4], 3: [2, 3, 4], 4: [1, 4]]
+
+Node 2: [2: [2, 3, 4], 3: [2, 3, 4], 4: [1, 4]]
+
+Node 3: [2: [2, 3, 4], 3: [2, 3, 4], 4: [1, 4]]
+
+Node 4: [1: [1, 2, 3, 4], 4: [1, 4]]
+
+You still need to collect all paths in the system, still keep track of all the votes, you send the encrypted votes one at a time to cape to build a graph, so then
+the message can be sent to this cape function to determine how the message will be routed, only Cape will have the entire view of the network. 
+
+Message: 
+Votes, destination node 
+
+
+Rececieve from Cape: the next node to forward this message. 
+Cape also can return to you the list of nodes. 
+
+### Action items 
+Update Cape function to be able to build a graph and also be able to return the list of nodes. 
+
+Update the gossip client to be able to 
+1. Encrypt their view of the network
+2. Collect other nodes' encrypted views  -> no byzantine fault tolerance]
+
+
+Node 1: want leader: submits [1, 2, 3, 4], [2, 3, 4], [2, 3, 4], [1, 4]]
+in order, to get the vote for leader for each of these nodes
+We choose the lowest node number as leader in the enclave, node 1 receives 1, 2, 2, 1 as the votes, for tie break we make 1 win. 
+
+Node 2: gets votes 2, 2, 1, elects itself
+
+Node 3: gets vote 2, 2, 1, elects self 
+
+Node 4: elects 1 
+
+
+### Vote: 
+NodeID 
+Version
+ListOfNodes: Cape encrypted
+
+
+### Cape function: 
+Return : list of nodes in all the votes and the leader (tallied in Cape function)
 
