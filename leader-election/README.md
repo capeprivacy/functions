@@ -101,38 +101,21 @@ Node 4: [1: [1, 2, 3, 4], 4: [1, 4]]
 You still need to collect all paths in the system, still keep track of all the votes, you send the encrypted votes one at a time to cape to build a graph, so then
 the message can be sent to this cape function to determine how the message will be routed, only Cape will have the entire view of the network. 
 
-Message: 
-Votes, destination node 
+
+Now after you build up the state, you can aggregate the result and perform an action: like sending a message from note 1 to 2.
+
+To run :
+```
+python start_node.py -p 5000 -n 5001 -f nVs2viSCs9YuUDLXgyiYRK -fh 513466258213de9c01667e4f4fd224a2fb7166f05499b0db71b5cf7758d22410
+```
+
+## The goods
+We found a way to circumvent not having mixed inputs
+We found a way to persist some state using multi invocation
+Cape encrypt works great
 
 
-Rececieve from Cape: the next node to forward this message. 
-Cape also can return to you the list of nodes. 
+## The bads
+Some weird error with bad URL using pycape
 
-### Action items 
-Update Cape function to be able to build a graph and also be able to return the list of nodes. 
-
-Update the gossip client to be able to 
-1. Encrypt their view of the network
-2. Collect other nodes' encrypted views  -> no byzantine fault tolerance]
-
-
-Node 1: want leader: submits [1, 2, 3, 4], [2, 3, 4], [2, 3, 4], [1, 4]]
-in order, to get the vote for leader for each of these nodes
-We choose the lowest node number as leader in the enclave, node 1 receives 1, 2, 2, 1 as the votes, for tie break we make 1 win. 
-
-Node 2: gets votes 2, 2, 1, elects itself
-
-Node 3: gets vote 2, 2, 1, elects self 
-
-Node 4: elects 1 
-
-
-### Vote: 
-NodeID 
-Version
-ListOfNodes: Cape encrypted
-
-
-### Cape function: 
-Return : list of nodes in all the votes and the leader (tallied in Cape function)
 

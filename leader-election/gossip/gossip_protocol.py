@@ -39,47 +39,42 @@ class GossipNode:
         self.verifier = verifier
         self.client = Cape()
         edges = {}
+        edges["uuid"] = str(self.port)
+        edges["generation"] =1
         edges["node_list"] = self.connected_nodes
         edge_info = json.dumps(edges)
         edge_info = bytes(edge_info, "utf8")
         encrypted = self.client.encrypt(input=edge_info)
-        base64_encoded_vote = encrypted.decode('utf-8')
-        self.received_votes[str(self.port)] = base64_encoded_vote
+        string_encoded_encrypted_edge_info = encrypted.decode('utf-8')
+        print(f"encrypted value: {string_encoded_encrypted_edge_info}")
+        self.iteration = 0
+        self.received_votes[str(self.port)] = string_encoded_encrypted_edge_info
         self.start_threads()
 
     def input_message(self):
         while True:
+            self.iteration += 1
             message_dict = {}
             message_dict["node"] = self.port
             message_dict["node_list"] = self.all_nodes
             message_dict["votes"] = self.received_votes
             message_to_send = json.dumps(message_dict)
 
-            leader_message = {}
-            leader_message["node_list"] = self.all_nodes
-            enclave_message = json.dumps(leader_message)
-            print(enclave_message)
-            user_data = bytes(enclave_message, "utf8")
-            result = self.client.run(
-                self.function_ref,
-                user_data,
-            )
-            leader = json.loads(result)
-            message = leader["message"].encode("utf-8")
-            signature = bytes.fromhex(leader["signature"])
-            digest = SHA256.new()
-            digest.update(message)
-            verify = self.verifier.verify(digest, signature)
-            if verify:
-                print("Successfully verified message")
-            else:
-                print("FAILED")
+            # Connect to the enclave function and send in the graph
+            self.client.connect(self.function_ref)
+            keys = self.received_votes.keys()
+            for i in keys:
+                # Get the message which has been formatted properly and turn it to bytes.
+                graph_message=self.received_votes.get(i)
+                enclave_message = json.dumps(graph_message)
+                user_data = bytes(enclave_message, "utf8")
+                print(f"sending data to enclave: {user_data}")
+                result = self.client.invoke(user_data)
+                print(f"sent encrypted graph message, got: {result}")
 
-            if leader["message"] == str(self.port):
-                print("I AM THE LEADER")
-
-            # call send message method and pass the input message.
-            # encode the message into ascii
+            result = self.client.invoke(b"get")
+            self.client.close()
+            print(f"current message result: {result.decode()}")
             send_to = self.connected_nodes.copy()
             print("sending message to peers now")
             self.transmit_message(message_to_send.encode("ascii"), send_to)

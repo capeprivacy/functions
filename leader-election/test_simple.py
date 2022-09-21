@@ -13,24 +13,15 @@ client = Cape()
 #     user_data,
 # )
 # print(result)
-key = """-----BEGIN PUBLIC KEY-----
-MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAnV8eokFPI6Nx+MJ+4iBG
-+5Ms1W2qadbuKf8pFL3s8aEsLp4MSH7809b8nsLhgxtbs+nBh1CNaoOxkxY2bhhH
-Kv8gmnkP0kuH0dRKz9Egf0R3CV+vA+lnRnZThoz8GeouXCmRoYT/crfIjNq4FnKb
-6MMsGOdT1aS/UUYO5kvtz7/gTXE79RfQURWSt6oI3hBJQg/629ju1YVplXIIKQVy
-ZqwSaihY6htW9HS4P9LPEsFOIPFvt0+ogwcYfub6+nBlBO8/Ud1TJCl1o9MgkMf5
-YVjAEnY8IjxuJjGI6f53foLSd/Suou8BO+fCke1p82Bv7fjpBlwz3lvDmqzzcmF5
-6L8Ru/nXD6vxBp34MkOwNIKrZWTxnLbgGKpk1k0T+2Gp2vahDeqHn/BGmtBREzbc
-Db2oNpnikBf0eVJAEGM8J/pwQXUt2afRpSJ+PDT7Nh3m199NghUSHbEzzAvoib9B
-VrlYJvrvIldBUMpboXFFn0HOku4OcdpCDuyauklCMFnK0YnqOUzXBokXQlkRqO5H
-GxSN8obYmBWRDOLkNx3wAhhDkrR+sxFpqk+rMFPjYx3khBRW1FuMDDsKTYbUrRHW
-I0oRt17NpJgBlRQWEJfS0rYTRpj5IAK6pBJR8WR08WpoOTW03cutEz5SfIonJAFA
-Phnoqp6wsB5/7JTzciA+qAMCAwEAAQ==
------END PUBLIC KEY-----"""
+edges = {}
+edges["uuid"] = str(5001)
+edges["generation"] =1
+edges["node_list"] = [5001, 5002]
+edge_info = json.dumps(edges)
+edge_info = bytes(edge_info, "utf8")
+# string_encoded_encrypted_edge_info = encrypted.decode('utf-8')
+# print(f"encrypted value: {string_encoded_encrypted_edge_info}")
 
-key = str.encode(key)
-
-
-encrypted  = client.encrypt(str.encode("what is this"))
+encrypted  = client.encrypt(edge_info)
 print(encrypted)
 
