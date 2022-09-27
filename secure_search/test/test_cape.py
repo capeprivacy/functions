@@ -17,8 +17,8 @@ def decrypt(ciphertext):
     return plaintext
 
 # Cape search function info
-function_id = "Jzv8Ksmqdf9n6za5s6qWiD"
-function_checksum = "a50e20e91434e66fe0aa576daf5f3366855bcb79fcb07419efe71c63ba995263"
+function_id = "ZRtuUk7zcijjVy5F7uE9r7"
+function_checksum = "ec8dce345048468ad2697e79d2a44086b6cf499f322c3e00bd91ee5b5097ede9"
 f = FunctionRef(function_id, function_checksum)
 
 # connect to Cape function
@@ -37,3 +37,5 @@ print(resp_ciphertext)
 plaintext = decrypt(resp_ciphertext)
 print(f'\nDecrypted response:')
 print(plaintext)
+
+client.close()
