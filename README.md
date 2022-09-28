@@ -51,7 +51,7 @@ cape deploy echo
 ```
 
 ```
-cape run 4b4961ef-1f04-4027-850a-3fd39a9501f2 -f input.echo.data
+cape run <YOUR_FUNCTION_ID> -f input.echo.data
 ```
 
 ### isprime
@@ -61,7 +61,7 @@ cape deploy isprime
 ```
 
 ```
-cape run 28028ae0-cf5c-47f8-8e8e-0da42b6dc142 -f input.isprime.data
+cape run <YOUR_FUNCTION_ID> -f input.isprime.data
 ```
 
 ### mobilenet
@@ -71,7 +71,7 @@ cape deploy mobilenet
 ```
 
 ```
-cape run nEeVVSW5faK66prUihxhEw -f input.dog_segmentation.bmp
+cape run <YOUR_FUNCTION_ID> -f input.dog_segmentation.bmp
 ```
 
 ### pendulum
@@ -96,7 +96,7 @@ Deploy with the CLI the function as follow:
 **Run the function:**
 You can run the function with the cli as follow. Just make sure to use the function id returned by `cape deploy`.
 ```
-cape run 2zbK8Fong64smU2GVuFMmS Europe/Paris 
+cape run <YOUR_FUNCTION_ID> Europe/Paris 
 ```
 
 ### np-stats
@@ -152,5 +152,5 @@ cape deploy secure_search
 ```
 
 ```
-cape run Jzv8Ksmqdf9n6za5s6qWiD -f input.search.data
+cape run <YOUR_FUNCTION_ID> -f input.search.data
 ```
