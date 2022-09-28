@@ -1,6 +1,6 @@
 # Mortgage Calculator
 
-This application is a mortgage calculator that computes if an applicat is eligible for a mortgage
+This application is a mortgage calculator that computes if an applicant is eligible for a mortgage
 ## Usage
 
 ### Deploy and run with Cape
