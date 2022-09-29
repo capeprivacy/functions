@@ -4,29 +4,29 @@
 
 To run these functions with Cape, you need to first install the [Cape CLI](https://github.com/capeprivacy/cli).
 
-### Cape login
+### Cape Login
 
-Log into Cape by running:
+Log in to Cape by running:
 ```
 cape login
 ```
 
 ### Cape Deploy
 
-Deploys a `function_dir` to Cape. Returns a `function_id`.
+Deploys your function and any dependencies within a `function_dir` to Cape. Returns a `function_id`:
 
 ```
 cape deploy <function_dir>
 ```
 
-Example:
+For example, if your function code was within a folder named `echo`:
 ```
 cape deploy echo
 ```
 
 #### Deploying on Windows
 
-If you are on Windows (or as an alternative to deploying the function as a directory) you can create a zip file and deploy it directly. This will fix issues you may run into with relative paths.
+If you are on Windows (or as an alternative to deploying the function as a directory) you can create a zip file and deploy it directly. This will fix issues you may run into with relative paths:
 
 ```
 cape deploy <function_name>.zip
@@ -34,11 +34,17 @@ cape deploy <function_name>.zip
 
 ### Cape Run
 
-Runs a cape function by `function_id` and `input_file`. Returns a `result`.
+Runs a cape function by `function_id` and takes `input_data`. Returns the result of the function:
 
 ```
-cape run <function_id> <input_file>
+cape run <function_id> <input_data>
 ```
+
+to pass `input_data` as a file, use `-f`:
+```
+cape run <function_id> -f <input_file>
+```
+
 
 ## Examples
 
