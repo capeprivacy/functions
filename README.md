@@ -106,7 +106,7 @@ cape run <YOUR_FUNCTION_ID> Europe/Paris
 ```
 
 ### np-stats
-A simple example with numpy dependencies and using `serdio.lift_io` to handle automatic serialization/deserialization of Cape function input/outputs. All commands are run from the repo root directory.
+A simple example with numpy dependencies and using [pycape](https://github.com/capeprivacy/pycape) and [serdio.lift_io](https://github.com/capeprivacy/pycape/tree/main/serdio) to handle automatic serialization/deserialization of Cape function input/outputs. All commands are run from the repo root directory.
 
 Note the `numpy_serde.py` helper, which defines a custom encoder/decoder bundle that allows `serdio` to handle numpy arrays.
 
