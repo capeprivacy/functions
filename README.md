@@ -133,7 +133,7 @@ cape token <FUNCTION_ID> --function-checksum <FUNCTION _CHECKSUM> o json >  np-s
 **Run the function:**
 You can run the function with PyCape as follow:
 ```
-export TOKEN_FILE=np-stats/numpy_token.json
+export FUNCTION_JSON=np-stats/numpy_token.json
 python np-stats/run.py
 ```
 
