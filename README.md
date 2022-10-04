@@ -96,7 +96,7 @@ docker run -v `pwd`:/build -w /build --rm -it python:3.9-slim-bullseye pip insta
 
 Deploy with the CLI the function as follow:
 ```bash
- cape deploy pendulum-deployment/
+cape deploy pendulum-deployment/
 ```
 
 **Run the function:**
@@ -106,31 +106,34 @@ cape run <YOUR_FUNCTION_ID> Europe/Paris
 ```
 
 ### np-stats
-A simple example with numpy dependencies and using `serdio.lift_io` to handle automatic serialization/deserialization of Cape function input/outputs. All commands are run from the repo root directory.
+A simple example with numpy dependencies and using [pycape](https://github.com/capeprivacy/pycape) and [serdio.lift_io](https://pydocs.capeprivacy.com/serdio.io_lifter.html#serdio.io_lifter.lift_io) to handle automatic serialization/deserialization of Cape function input/outputs. All commands are run from the repo root directory.
 
 Note the `numpy_serde.py` helper, which defines a custom encoder/decoder bundle that allows `serdio` to handle numpy arrays.
 
 **Build the deployment package:**
 
 ```bash
-mkdir np-stats-deployment
-cp np-stats/app.py np-stats/numpy_serde.py np-stats-deployment/.
+mkdir np-stats/np-stats-deployment
+cp np-stats/app.py np-stats/numpy_serde.py np-stats/np-stats-deployment/.
 # Add serdio and numpy dependencies using docker
-docker run -v `pwd`:/build -w /build --rm -it python:3.9-slim-bullseye pip install -r np-stats/requirements.txt --target np-stats-deployment/
+docker run -v `pwd`:/build -w /build --rm -it python:3.9-slim-bullseye pip install -r np-stats/requirements.txt --target np-stats/np-stats-deployment/
 ```
 
 **Deploy the function:**
 
 Deploy with the CLI the function as follow:
 ```
-cape deploy np-stats-deployment
+cape deploy np-stats/np-stats-deployment
+```
+Generate the function token based on the function ID and function checksum returned by deploy:
+```
+cape token <FUNCTION_ID> --function-checksum <FUNCTION _CHECKSUM> -o json >  np-stats/numpy_token.json
 ```
 
 **Run the function:**
 You can run the function with PyCape as follow:
 ```
-export CAPE_FUNCTION_ID="<YOUR FUNCTION ID>"
-export CAPE_FUNCTION_HASH="<YOUR FUNCTION HASH>"
+export FUNCTION_JSON=np-stats/numpy_token.json
 python np-stats/run.py
 ```
 
