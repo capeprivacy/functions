@@ -127,7 +127,7 @@ cape deploy np-stats/np-stats-deployment
 ```
 Generate the function token based on the function ID and function checksum returned by deploy:
 ```
-cape token <FUNCTION_ID> --function-checksum <FUNCTION _CHECKSUM> o json >  np-stats/numpy_token.json
+cape token <FUNCTION_ID> --function-checksum <FUNCTION _CHECKSUM> -o json >  np-stats/numpy_token.json
 ```
 
 **Run the function:**
