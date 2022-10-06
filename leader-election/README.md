@@ -15,8 +15,14 @@ cape deploy function/ --url "wss://hackathon.capeprivacy.com"
 
 Then update the function hash and function id with when starting up the nodes.
 
+Install crypto package for key pair generation
+```
+pip install -r requirements.txt
+```
+
 Generate the crypto content (in python) and run:
 ``` python
+from Crypto.PublicKey import RSA
 key = RSA.generate(2048)
 private_key_bytes = key.export_key('PEM')
 public_key_bytes = key.publickey().exportKey('PEM')
