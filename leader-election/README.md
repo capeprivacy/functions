@@ -52,21 +52,9 @@ active nodes, and would not respect the leader elected in that case.
 
 Health checks, network coalescence are omitted from the current code for simplicity purposes.
 
-The limit for Byzantine fault tolerance is less than half of the node pool. In the case that the number of 
-malicious nodes exceeds half, then it becomes impossible for a correct node to identify another correct node.
+The current example does not satisfy Byzantine fault tolerance. To do that we would need to collect
+the signed views of each of the nodes in order to be able to gurantee that the leader elected is correct.
+This would be an interesting idea to explore based on the current implementation.
 
-## Changes from last time
-* Way better reliability
-* Used Pycape this time
-* Focus on the availability and guranteed execution of the program instead of data sensitivity
-
-Feedback: 
-Should only initiate one Cape instance, don't do it in a thread, probably should be documented somewhere
-
-## Want: 
-If enclave can maintain some form of state of nodes
-then this would be way more impressive. Next steps would be to figure out the best way of integrating 
-state via part of the data.
-You would get a trusted service with high availability to track alive nodes.
 
 
