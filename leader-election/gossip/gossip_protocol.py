@@ -35,7 +35,7 @@ class GossipNode:
         verifier = PKCS1_v1_5.new(public_key)
 
         self.verifier = verifier
-        self.client = Cape(url="wss://hackathon.capeprivacy.com")
+        self.client = Cape()
         self.start_threads()
 
     def input_message(self):
@@ -46,8 +46,8 @@ class GossipNode:
             print(message_to_send)
             user_data = bytes(message_to_send, "utf8")
             result = self.client.run(
-                function_ref=self.function_ref,
-                input=user_data,
+                self.function_ref,
+                user_data,
             )
             leader = json.loads(result)
             message = leader["message"].encode("utf-8")

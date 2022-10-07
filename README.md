@@ -163,3 +163,7 @@ cape deploy secure_search
 ```
 cape run <YOUR_FUNCTION_ID> -f input.search.data
 ```
+
+### leader_election
+Demos how secure trusted execution environment like Cape can be leveraged in consensus in order to gurantee fairness. Details on how to run this example can be found
+[here](https://github.com/capeprivacy/functions/tree/main/leader-election)
