@@ -32,5 +32,3 @@ def cape_handler(arg):
     return_val["signature"] = sig.hex()
     print("digest in hex", sig.hex())
     return json.dumps(return_val)
-
-

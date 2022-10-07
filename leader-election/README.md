@@ -10,7 +10,9 @@ pip install -r function/requirements.txt --target function/
 
 You would first have to deploy the function: 
 ```
-cape deploy function/ --url "wss://hackathon.capeprivacy.com"
+cape login                                                                                                   // then follow prompt
+cape deploy function/
+cape token <FUNCTION_ID> --function-checksum <FUNCTION _CHECKSUM> -o json >  leader_election.json            // with output from `deploy` step
 ```
 
 Then update the function hash and function id with when starting up the nodes.
@@ -35,8 +37,8 @@ with open("public.pem", "wb") as f:
 ```
 Begin a list of python nodes which are identified by IP and port number. 
 ```
-python start_node.py -p 5000 -n 5001 -f `<FUNCTION_ID>` -fh `<FUNCTION_HASH>`
-python start_node.py -p 5001 -n 5000 -f `<FUNCTION_ID>` -fh `<FUNCTION_HASH>`
+python start_node.py -p 5000 -n 5001
+python start_node.py -p 5001 -n 5000
 ```
 
 # The algorithm
