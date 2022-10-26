@@ -47,6 +47,3 @@ def cape_handler(input_data):
     }
 
     return model
-
-
-print(cape_handler("dfdsf"))
