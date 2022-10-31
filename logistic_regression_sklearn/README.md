@@ -1,4 +1,4 @@
-# Logistic Regression Training
+# Logistic Regression Training with Sklearn
 
 This application securely trains and an Sklearn logistic regression model on the breast cancer dataset available at: https://archive.ics.uci.edu/ml/datasets/breast+cancer that predicts if a tumor is benign or malignant.
 
