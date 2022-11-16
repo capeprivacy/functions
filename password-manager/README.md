@@ -16,6 +16,20 @@ Account|Label|encrypted output|
 ## App
 We can just use a simple echo app to return the password in plaintext. 
 
+### Commands
+
+There are a couple of commands that we can use to interact with the password manager app.
+The syntax for interacting with the app is `<identifier>:<keyword>`.
+
+**name**
+Specify the name of the account and password.
+
+**tag**
+Returns all the secrets with the corresponding tag. 
+
+**all**
+Returns all the secrets stored in the password vault.
+
 
 ## Alternative design
 We can encrypt the entire password store and pass two separate values one after the other.
