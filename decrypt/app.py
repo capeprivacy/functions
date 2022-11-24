@@ -9,4 +9,4 @@ def cape_handler(raw):
     sock.sendall(json.dumps(({"id": 1, "method": "CapeEncryptRPC.Decrypt", "params": [payload["data"]]})).encode())
 
     response = json.loads(sock.recv(4096))
-    return response['result']
+    return response
