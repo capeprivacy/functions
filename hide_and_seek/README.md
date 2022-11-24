@@ -1,5 +1,5 @@
 # Hide and seek
-This function is meant to go hand in hand with a webapp that hosts 
+This function is meant to go hand in hand with a [webapp](https://codesandbox.io/s/hide-and-seek-us7feb?file=/src/App.tsx) that hosts 
 a GUI for interacting with this function. 
 
 ## Function breakdown
@@ -14,8 +14,5 @@ the function will return a value.
 
 
 # Setup
-## Fetch dependencies for function
-Fetch depdencies before deploy:
-```
-pip install -r requirements.txt --target seek/
-```
+Just follow steps from this [blog post](https://dev.to/ericape/hide-and-seek-mnh)! 
+
