@@ -93,7 +93,7 @@ Function Hash ➜ f420da150d095b9a6151d34dec7b9483bd1e618d5d6ca0b20a6813189c10c4
 cape token <FUNCTION_ID> --function-checksum <FUNCTION_CHECKSUM> -o json > app_token.json
 ```
 
-The file `app_toke.json` will be used to create a function reference `pycape.FunctionRef` for estabilishing a connection with the enclave.
+The file `app_token.json` will be used to create a function reference `pycape.FunctionRef` for estabilishing a connection with the enclave.
 
 ### Invoke the deployed Cape function from PyCape
 ```
