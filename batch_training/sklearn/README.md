@@ -82,9 +82,9 @@ Congratulations, you're all set!
 cape deploy ./app
 
 Deploying function to Cape ...
-Success! Deployed function to Cape
-Function ID ➜ 8QoFCwrCu4sVd2wDAXxnbV
-Function Hash ➜ f420da150d095b9a6151d34dec7b9483bd1e618d5d6ca0b20a6813189c10c45b
+Success! Deployed function to Cape.
+Function ID ➜  NxnusuJ8caocbx9ckEg5tb
+Function Checksum ➜  bf750d97b35fe9973e580949e4143ea5350df2d3ca607f85aecebbe016ac1eb1
 ```
 
 ### Generate token
@@ -97,7 +97,7 @@ The file `app_token.json` will be used to create a function reference `pycape.Fu
 
 ### Invoke the deployed Cape function from PyCape
 ```
-python3 invoke_app_sklearn.py
+CAPE_DEV_DISABLE_SSL=True python3 invoke_app_sklearn.py
 ```
 This script will invoke the Cape function repeatedly to train the model batch by batch. After training is completed, the model is saved as a pickle file.
 

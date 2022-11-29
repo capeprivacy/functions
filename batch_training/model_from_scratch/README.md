@@ -35,9 +35,9 @@ Congratulations, you're all set!
 cape deploy ./app
 
 Deploying function to Cape ...
-Success! Deployed function to Cape
-Function ID ➜ 8QoFCwrCu4sVd2wDAXxnbV
-Function Hash ➜ f420da150d095b9a6151d34dec7b9483bd1e618d5d6ca0b20a6813189c10c45b
+Success! Deployed function to Cape.
+Function ID ➜  Laj8YqrvCaK2izYmnbsbdX
+Function Checksum ➜  798bc8e03b3dac51967607877fb3ac4be8acf5e02aae9699ec8fccced2f7b0ac
 ```
 
 ### Generate token

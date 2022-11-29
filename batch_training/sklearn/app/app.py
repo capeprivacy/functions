@@ -1,4 +1,4 @@
-# Import necessary packages
+# import necessary packages
 import sklearn
 from sklearn.linear_model import SGDClassifier
 import pandas as pd

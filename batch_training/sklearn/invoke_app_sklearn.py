@@ -9,7 +9,7 @@ from pycape import FunctionRef
 
 if __name__ == "__main__":
     url = os.environ.get("CAPE_HOST", "https://k8s-cape-enclaver-750003af11-e3080498c852b366.elb.us-east-1.amazonaws.com")
-    function_json = os.environ.get("FUNCTION_JSON", "sklearn_token.json")
+    function_json = os.environ.get("FUNCTION_JSON", "app_token.json")
     function_json = pathlib.Path(__file__).parent.absolute() / function_json
     function_ref = FunctionRef.from_json(function_json)
     cape = Cape(url=url)
