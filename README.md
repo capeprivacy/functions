@@ -24,14 +24,14 @@ cape run capedocs/echo -f echo/input.echo.data
 
 ### Isprime
 
-A simple function checking if your number is prime or not. Checkout the folder [isprime](.isprime/) to learn how to deploy this function. To invoke this function, you can run the following:
+A simple function checking if your number is prime or not. Check out the folder [isprime](.isprime/) to learn how to deploy this function. To invoke this function, you can run the following:
 
 ```
 cape run capedocs/isprime -f isprime/input.isprime.data
 ```
 
 ### Pendulum
-In this example, we show how to run a function requiring a dependency. The function simply returns the current time based on a specific timezone using the [Pendulum](https://pendulum.eustace.io/) library. To learn how to deploy this function, checkout the folder [pendulum](./pendulum/). To invoke the function, invoke:
+In this example, we show how to run a function requiring a dependency. The function simply returns the current time based on a specific timezone using the [Pendulum](https://pendulum.eustace.io/) library. To learn how to deploy this function, check out the folder [pendulum](./pendulum/). To invoke the function, invoke:
 
 ```
 cape run capedocs/pendulum Europe/Paris 
@@ -76,7 +76,7 @@ To learn how you can deploy and invoke an image classification model using the [
 
 
 ### Image Classification with tflite
-This example demonstrates how you can deploy and invoke an image classification model with [tflite](https://www.tensorflow.org/lite). To learn how to deploy this application, you can checkout the folder [image-classification](./image_recognition). To invoke the model, simply run:
+This example demonstrates how to deploy and invoke an image classification model with [tflite](https://www.tensorflow.org/lite). To learn how to deploy this application, you can check out the folder [image-classification](./image_recognition). To invoke the model, run:
 
 ```
 cape run capedocs/image-recognition -f image_recognition/coffee.jpg
@@ -85,7 +85,7 @@ cape run capedocs/image-recognition -f image_recognition/coffee.jpg
 ```
 
 ### Sentiment analysis with tflite
-This example demonstrates how you can deploy and invoke a sentiment analysis model with [tflite](https://www.tensorflow.org/lite). To learn how to deploy this application, you can checkout the folder [sentiment_analysis](./sentiment_analysis). To invoke the model, simply run:
+This example demonstrates how you can deploy and invoke a sentiment analysis model with [tflite](https://www.tensorflow.org/lite). To learn how to deploy this application, you can check out the folder [sentiment_analysis](./sentiment_analysis). To invoke the model, simply run:
 
 ```
 cape run capedocs/sentiment-analysis -f sentiment_analysis/input.pos.data
