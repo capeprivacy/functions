@@ -93,12 +93,28 @@ Demos how secure trusted execution environment like Cape can be leveraged in con
 
 
 ### hide-and-seek
-To learn more about the confidential hide and seek example, you can check the folder (hide_and_seek)[./hide_and_seek]
+To learn more about the confidential hide and seek example, you can check the folder [hide_and_seek](./hide_and_seek).
 
 
 ### mortgage
 This application is a mortgage calculator that computes if an applicant is eligible for a mortgage. To learn how to deploy this application, you an checkout the folder (mortgage)[./mortgage]. To call this function, you can run:
 ```
 cape run capedocs/mortgage -f input.mortgage.json
+```
+
+## Machine Learning examples
+
+### Image Classification Inference with ONNX
+
+To learn how you can deploy and invoke an image classification model using the [onnxruntime], you can check the [capeprivacy/image-classification-onnx](image-classification-onnxhttps://github.com/capeprivacy/image-classification-onnx) repository.
+
+
+### Image Classification with tflite
+This example demonstrates how you can deploy and invoke an image classification model with [tflite](https://www.tensorflow.org/lite). To learn how to deploy this application, you can checkout the folder [image-classification](image_recognition). To invoke the model, simply run:
+
+```
+cape run capedocs/image_classification -f image_classification/coffee.jpg
+
+('Image Label is :', 'espresso', ', with Accuracy :', 84.38, '%.')
 ```
 
