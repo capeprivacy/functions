@@ -80,13 +80,17 @@ export FUNCTION_ID=capedocs/np-stats
 python np-stats/run.py
 ```
 
-### secure_search
+### secure-search
 Simulates a cybersecurity search function, where the IP addresses you are interested in need to remain private but the data/logs you are searching might be public. You can learn more about this function by checking the folder [secure-search](./secure_search/).
 
 ```
 cape run capedocs/secure-search -f secure-search/input.search.data
 ```
 
-### leader_election
+### leader-election
 Demos how secure trusted execution environment like Cape can be leveraged in consensus in order to guarantee fairness. Details on how to run this example can be found
-[here](https://github.com/capeprivacy/functions/tree/main/leader-election)
+[here](./leader-election)
+
+
+### hide-and-seek
+To learn more about the confidential hide and seek example, you can check the folder (hide_and_seek)[./hide_and_seek]
