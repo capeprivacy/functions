@@ -7,7 +7,9 @@ Note the `numpy_serde.py` helper, which defines a custom encoder/decoder bundle 
 **Build the deployment package:**
 
 ```bash
+# Create a deployment folder
 mkdir np-stats-deployment
+# Copy the cape function (app.py) in the deployment folder
 cp app.py numpy_serde.py np-stats-deployment/.
 # Add serdio and numpy dependencies using docker
 docker run -v `pwd`:/build -w /build --rm -it python:3.9-slim-bullseye pip install -r requirements.txt --target np-stats-deployment/
