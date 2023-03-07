@@ -58,12 +58,10 @@ cape run capedocs/echo -f echo/input.echo.data
 
 ### isprime
 
-```
-cape deploy isprime
-```
+A simple function checking if your number is prime or not. Checkout the folder [isprime](.isprime/) to learn how to deploy this function. To invoke this function, you can run the following:
 
 ```
-cape run <YOUR_FUNCTION_ID> -f input.isprime.data
+cape run capedocs/isprime -f isprime/input.isprime.data
 ```
 
 ### pendulum
