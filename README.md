@@ -94,3 +94,11 @@ Demos how secure trusted execution environment like Cape can be leveraged in con
 
 ### hide-and-seek
 To learn more about the confidential hide and seek example, you can check the folder (hide_and_seek)[./hide_and_seek]
+
+
+### mortgage
+This application is a mortgage calculator that computes if an applicant is eligible for a mortgage. To learn how to deploy this application, you an checkout the folder (mortgage)[./mortgage]. To call this function, you can run:
+```
+cape run capedocs/mortgage -f input.mortgage.json
+```
+
