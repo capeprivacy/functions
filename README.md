@@ -106,34 +106,11 @@ cape run <YOUR_FUNCTION_ID> Europe/Paris
 ```
 
 ### np-stats
-A simple example with numpy dependencies and using [pycape](https://github.com/capeprivacy/pycape) and [serdio.lift_io](https://pydocs.capeprivacy.com/serdio.io_lifter.html#serdio.io_lifter.lift_io) to handle automatic serialization/deserialization of Cape function input/outputs. All commands are run from the repo root directory.
+A simple example with numpy dependencies and using [pycape](https://github.com/capeprivacy/pycape) and [serdio.lift_io](https://pydocs.capeprivacy.com/serdio.io_lifter.html#serdio.io_lifter.lift_io) to handle automatic serialization/deserialization of Cape function input/outputs. You can learn how to deploy this function by checking the folder [./np-stats](./np-stats/). You can run the function as follow after install installing in a virtual environment in `./np-stats/requirements.txt`:
 
-Note the `numpy_serde.py` helper, which defines a custom encoder/decoder bundle that allows `serdio` to handle numpy arrays.
-
-**Build the deployment package:**
-
-```bash
-mkdir np-stats/np-stats-deployment
-cp np-stats/app.py np-stats/numpy_serde.py np-stats/np-stats-deployment/.
-# Add serdio and numpy dependencies using docker
-docker run -v `pwd`:/build -w /build --rm -it python:3.9-slim-bullseye pip install -r np-stats/requirements.txt --target np-stats/np-stats-deployment/
 ```
-
-**Deploy the function:**
-
-Deploy with the CLI the function as follow:
-```
-cape deploy np-stats/np-stats-deployment
-```
-Generate the function token based on the function ID and function checksum returned by deploy:
-```
-cape token <FUNCTION_ID> --function-checksum <FUNCTION _CHECKSUM> -o json >  np-stats/numpy_token.json
-```
-
-**Run the function:**
-You can run the function with PyCape as follow:
-```
-export FUNCTION_JSON=np-stats/numpy_token.json
+export TOKEN=<YOUR TOKEN>
+export FUNCTION_ID=capedocs/np-stats
 python np-stats/run.py
 ```
 
