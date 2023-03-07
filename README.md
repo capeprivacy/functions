@@ -126,3 +126,11 @@ cape run capedocs/sentiment_analysis -f sentiment_analysis/input.pos.data
 
 ('The sentiment is: ', 'positive', ' with a probability of ', 78.08290123939514, '%.')
 ```
+
+### Training and Inference with Scikit-Learn.
+You can check the following examples to learn about to deploy and invoke machine learning models with Scikit-Learn:
+- [credit_card_fraud_detection](./credit_card_fraud_detection/): performs secure inference to classify credit card transactions as fraudulent or legitimate.
+- [logistic_regression_sklearn](./logistic_regression_sklearn/): securely trains and an Sklearn logistic regression model on the breast cancer dataset.
+- [batch_training](./batch_training/): describes how to perform batch training with Sklearn model.
+
+ 
