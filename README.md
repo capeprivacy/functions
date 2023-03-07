@@ -2,61 +2,27 @@
 
 ## Getting Started
 
-To run these functions with Cape, you need to first install the [Cape CLI](https://github.com/capeprivacy/cli).
-
-### Cape Login
-
-Log in to Cape by running:
+To run these functions with Cape, you need to first install the [Cape CLI](https://docs.capeprivacy.com/getting-started#install-the-cape-cli). Then you will have to sign up from [Cape's website](https://capeprivacy.com/) or using the CLI:
 ```
-cape login
+cape signup
+``` 
+
+These examples can be also executed from Cape's SDKs: [cape-js](https://docs.capeprivacy.com/sdks/javascript-sdk) and [pycape](https://pydocs.capeprivacy.com/). If you execute these functions from one of the SDK, you will have to generate a [personal access token](https://docs.capeprivacy.com/reference/user-tokens). This can be done from [Cape's website](https://capeprivacy.com/) or from the CLI:
 ```
-
-### Cape Deploy
-
-Deploys your function and any dependencies within a `function_dir` to Cape. Returns a `function_id`:
-
+cape token create --name my-token --description 'for use in the javascript sdk'
 ```
-cape deploy <function_dir>
-```
-
-For example, if your function code was within a folder named `echo`:
-```
-cape deploy echo
-```
-
-#### Deploying on Windows
-
-If you are on Windows (or as an alternative to deploying the function as a directory) you can create a zip file and deploy it directly. This will fix issues you may run into with relative paths:
-
-```
-cape deploy <function_name>.zip
-```
-
-### Cape Run
-
-Runs a cape function by `function_id` and takes `input_data`. Returns the result of the function:
-
-```
-cape run <function_id> <input_data>
-```
-
-to pass `input_data` as a file, use `-f`:
-```
-cape run <function_id> -f <input_file>
-```
-
 
 ## Examples
 
-### echo
+### Echo
 
-A simple function that returns whatever you send it. Checkout the folder [echo](.echo/) to learn how to deploy this function. To invoke this function, you can run the following:
+A simple function that returns whatever you send it. Check out the folder [echo](.echo/) to learn how to deploy this function. To invoke this function, you can run the following:
 
 ```
 cape run capedocs/echo -f echo/input.echo.data
 ```
 
-### isprime
+### Isprime
 
 A simple function checking if your number is prime or not. Checkout the folder [isprime](.isprime/) to learn how to deploy this function. To invoke this function, you can run the following:
 
@@ -64,14 +30,14 @@ A simple function checking if your number is prime or not. Checkout the folder [
 cape run capedocs/isprime -f isprime/input.isprime.data
 ```
 
-### pendulum
+### Pendulum
 In this example, we show how to run a function requiring a dependency. The function simply returns the current time based on a specific timezone using the [Pendulum](https://pendulum.eustace.io/) library. To learn how to deploy this function, checkout the folder [pendulum](./pendulum/). To invoke the function, invoke:
 
 ```
 cape run capedocs/pendulum Europe/Paris 
 ```
 
-### np-stats
+### Numpy Stats
 A simple example with numpy dependencies and using [pycape](https://github.com/capeprivacy/pycape) and [serdio.lift_io](https://pydocs.capeprivacy.com/serdio.io_lifter.html#serdio.io_lifter.lift_io) to handle automatic serialization/deserialization of Cape function input/outputs. You can learn how to deploy this function by checking the folder [np-stats](./np-stats/). You can run the function as follow after install installing in a virtual environment in `np-stats/requirements.txt`:
 
 ```
@@ -80,24 +46,24 @@ export FUNCTION_ID=capedocs/np-stats
 python np-stats/run.py
 ```
 
-### secure-search
+### Secure Search
 Simulates a cybersecurity search function, where the IP addresses you are interested in need to remain private but the data/logs you are searching might be public. You can learn more about this function by checking the folder [secure-search](./secure_search/).
 
 ```
 cape run capedocs/secure-search  -f secure_search/input.search.data
 ```
 
-### leader-election
-Demos how secure trusted execution environment like Cape can be leveraged in consensus in order to guarantee fairness. Details on how to run this example can be found
+### Leader Election
+Demos how a secure trusted execution environment like Cape can be leveraged in consensus in order to guarantee fairness. Details on how to run this example can be found
 [here](./leader-election).
 
 
-### hide-and-seek
-To learn more about the confidential hide and seek example, you can check the folder [hide_and_seek](./hide_and_seek).
+### Hide-and-seek
+To learn more about the confidential hide-and-seek example, you can check the folder [hide_and_seek](./hide_and_seek).
 
 
-### mortgage
-This application is a mortgage calculator that computes if an applicant is eligible for a mortgage. To learn how to deploy this application, you an checkout the folder (mortgage)[./mortgage]. To call this function, you can run:
+### Mortgage
+This application is a mortgage calculator that computes if an applicant is eligible for a mortgage. To learn how to deploy this application, you can check out the folder (mortgage)[./mortgage]. To call this function, you can run:
 ```
 cape run capedocs/mortgage -f mortgage/input.mortgage.json
 ```
@@ -106,7 +72,7 @@ cape run capedocs/mortgage -f mortgage/input.mortgage.json
 
 ### Image Classification Inference with ONNX
 
-To learn how you can deploy and invoke an image classification model using the [onnxruntime], you can check the [capeprivacy/image-classification-onnx](image-classification-onnxhttps://github.com/capeprivacy/image-classification-onnx) repository.
+To learn how you can deploy and invoke an image classification model using the [onnxruntime](https://onnxruntime.ai/), you can check the [capeprivacy/image-classification-onnx](image-classification-onnxhttps://github.com/capeprivacy/image-classification-onnx) repository.
 
 
 ### Image Classification with tflite
@@ -128,9 +94,9 @@ cape run capedocs/sentiment-analysis -f sentiment_analysis/input.pos.data
 ```
 
 ### Training and Inference with Scikit-Learn.
-You can check the following examples to learn about to deploy and invoke machine learning models with Scikit-Learn:
+You can check the following examples to learn about how to deploying and invoke machine learning models with Scikit-Learn:
 - [credit_card_fraud_detection](./credit_card_fraud_detection/): performs secure inference to classify credit card transactions as fraudulent or legitimate.
-- [logistic_regression_sklearn](./logistic_regression_sklearn/): securely trains and an Sklearn logistic regression model on the breast cancer dataset.
-- [batch_training](./batch_training/): describes how to perform batch training with Sklearn model.
+- [logistic_regression_sklearn](./logistic_regression_sklearn/): securely train an Sklearn logistic regression model on the breast cancer dataset.
+- [batch_training](./batch_training/): shows how to perform batch training with Sklearn model.
 
  
