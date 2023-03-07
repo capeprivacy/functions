@@ -110,7 +110,7 @@ To learn how you can deploy and invoke an image classification model using the [
 
 
 ### Image Classification with tflite
-This example demonstrates how you can deploy and invoke an image classification model with [tflite](https://www.tensorflow.org/lite). To learn how to deploy this application, you can checkout the folder [image-classification](image_recognition). To invoke the model, simply run:
+This example demonstrates how you can deploy and invoke an image classification model with [tflite](https://www.tensorflow.org/lite). To learn how to deploy this application, you can checkout the folder [image-classification](./image_recognition). To invoke the model, simply run:
 
 ```
 cape run capedocs/image_classification -f image_classification/coffee.jpg
@@ -118,3 +118,11 @@ cape run capedocs/image_classification -f image_classification/coffee.jpg
 ('Image Label is :', 'espresso', ', with Accuracy :', 84.38, '%.')
 ```
 
+### Sentiment analysis with tflite
+This example demonstrates how you can deploy and invoke a sentiment analysis model with [tflite](https://www.tensorflow.org/lite). To learn how to deploy this application, you can checkout the folder [sentiment_analysis](./sentiment_analysis). To invoke the model, simply run:
+
+```
+cape run capedocs/sentiment_analysis -f sentiment_analysis/input.pos.data
+
+('The sentiment is: ', 'positive', ' with a probability of ', 78.08290123939514, '%.')
+```
