@@ -2,13 +2,6 @@
 
 A simple function checking if your number is prime or not. You can deploy this function by simply running:
 ```
-cape deploy ../isprime
-```
-
-or you can also create a new folder then place the cape function in it:
-```console
-make isprime_deploy
-cp app.py isprime_deploy
 cape deploy isprime_deploy
 ```
 
