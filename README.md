@@ -84,12 +84,12 @@ python np-stats/run.py
 Simulates a cybersecurity search function, where the IP addresses you are interested in need to remain private but the data/logs you are searching might be public. You can learn more about this function by checking the folder [secure-search](./secure_search/).
 
 ```
-cape run capedocs/secure-search -f secure-search/input.search.data
+cape run capedocs/secure-search  -f secure_search/input.search.data
 ```
 
 ### leader-election
 Demos how secure trusted execution environment like Cape can be leveraged in consensus in order to guarantee fairness. Details on how to run this example can be found
-[here](./leader-election)
+[here](./leader-election).
 
 
 ### hide-and-seek
@@ -99,7 +99,7 @@ To learn more about the confidential hide and seek example, you can check the fo
 ### mortgage
 This application is a mortgage calculator that computes if an applicant is eligible for a mortgage. To learn how to deploy this application, you an checkout the folder (mortgage)[./mortgage]. To call this function, you can run:
 ```
-cape run capedocs/mortgage -f input.mortgage.json
+cape run capedocs/mortgage -f mortgage/input.mortgage.json
 ```
 
 ## Machine Learning examples
@@ -113,7 +113,7 @@ To learn how you can deploy and invoke an image classification model using the [
 This example demonstrates how you can deploy and invoke an image classification model with [tflite](https://www.tensorflow.org/lite). To learn how to deploy this application, you can checkout the folder [image-classification](./image_recognition). To invoke the model, simply run:
 
 ```
-cape run capedocs/image_classification -f image_classification/coffee.jpg
+cape run capedocs/image-recognition -f image_recognition/coffee.jpg
 
 ('Image Label is :', 'espresso', ', with Accuracy :', 84.38, '%.')
 ```
@@ -122,7 +122,7 @@ cape run capedocs/image_classification -f image_classification/coffee.jpg
 This example demonstrates how you can deploy and invoke a sentiment analysis model with [tflite](https://www.tensorflow.org/lite). To learn how to deploy this application, you can checkout the folder [sentiment_analysis](./sentiment_analysis). To invoke the model, simply run:
 
 ```
-cape run capedocs/sentiment_analysis -f sentiment_analysis/input.pos.data
+cape run capedocs/sentiment-analysis -f sentiment_analysis/input.pos.data
 
 ('The sentiment is: ', 'positive', ' with a probability of ', 78.08290123939514, '%.')
 ```
