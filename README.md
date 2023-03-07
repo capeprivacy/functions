@@ -50,14 +50,10 @@ cape run <function_id> -f <input_file>
 
 ### echo
 
-A simple function that returns whatever you send it.
+A simple function that returns whatever you send it. Checkout the folder [echo](.echo/) to learn how to deploy this function. To invoke this function, you can run the following:
 
 ```
-cape deploy echo
-```
-
-```
-cape run <YOUR_FUNCTION_ID> -f input.echo.data
+cape run capedocs/echo -f echo/input.echo.data
 ```
 
 ### isprime

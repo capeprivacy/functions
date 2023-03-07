@@ -1,0 +1,18 @@
+# echo
+
+A simple function that returns whatever you send it. You can deploy this function by simply running:
+```
+cape deploy ../echo
+```
+
+or you can also create a new folder then place the cape function in it:
+```console
+make echo_deploy
+cp app.py echo_deploy
+cape deploy echo_deploy
+```
+
+Then to invoke it you can run:
+```
+cape run <YOUR_FUNCTION_ID> -f input.echo.data
+````
