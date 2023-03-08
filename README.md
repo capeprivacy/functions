@@ -2,168 +2,144 @@
 
 ## Getting Started
 
-To run these functions with Cape, you need to first install the [Cape CLI](https://github.com/capeprivacy/cli).
-
-### Cape Login
-
-Log in to Cape by running:
+To run these functions with Cape, you need to first install the [Cape CLI](https://docs.capeprivacy.com/getting-started#install-the-cape-cli). Then you will have to sign up from [Cape's website](https://capeprivacy.com/) or using the CLI:
 ```
-cape login
+cape signup
+``` 
+
+These examples can be also executed from Cape's SDKs: [cape-js](https://docs.capeprivacy.com/sdks/javascript-sdk) and [pycape](https://pydocs.capeprivacy.com/). If you execute these functions from one of the SDK, you will have to generate a [personal access token](https://docs.capeprivacy.com/reference/user-tokens). This can be done from [Cape's website](https://capeprivacy.com/) or from the CLI:
 ```
-
-### Cape Deploy
-
-Deploys your function and any dependencies within a `function_dir` to Cape. Returns a `function_id`:
-
+cape token create --name my-token --description 'for use in the javascript sdk'
 ```
-cape deploy <function_dir>
-```
-
-For example, if your function code was within a folder named `echo`:
-```
-cape deploy echo
-```
-
-#### Deploying on Windows
-
-If you are on Windows (or as an alternative to deploying the function as a directory) you can create a zip file and deploy it directly. This will fix issues you may run into with relative paths:
-
-```
-cape deploy <function_name>.zip
-```
-
-### Cape Run
-
-Runs a cape function by `function_id` and takes `input_data`. Returns the result of the function:
-
-```
-cape run <function_id> <input_data>
-```
-
-to pass `input_data` as a file, use `-f`:
-```
-cape run <function_id> -f <input_file>
-```
-
 
 ## Examples
 
-### echo
+### Echo
 
-A simple function that returns whatever you send it.
-
-```
-cape deploy echo
-```
+A simple function that returns whatever you send it. Check out the folder [echo](.echo/) to learn how to deploy this function. To invoke this function, you can run the following:
 
 ```
-cape run <YOUR_FUNCTION_ID> -f input.echo.data
+cape run capedocs/echo -f echo/input.echo.data
 ```
 
-### isprime
+### Isprime
+
+A simple function checking if your number is prime or not. Check out the folder [isprime](.isprime/) to learn how to deploy this function. To invoke this function, you can run the following:
 
 ```
-cape deploy isprime
+cape run capedocs/isprime -f isprime/input.isprime.data
 ```
 
-```
-cape run <YOUR_FUNCTION_ID> -f input.isprime.data
-```
-
-### mobilenet
+### Pendulum
+In this example, we show how to run a function requiring a dependency. The function simply returns the current time based on a specific timezone using the [Pendulum](https://pendulum.eustace.io/) library. To learn how to deploy this function, check out the folder [pendulum](./pendulum/). To invoke the function, invoke:
 
 ```
-cape deploy mobilenet
+cape run capedocs/pendulum Europe/Paris 
 ```
 
-```
-cape run <YOUR_FUNCTION_ID> -f input.dog_segmentation.bmp
-```
+### Numpy Stats
+A simple example with numpy dependencies and using [pycape](https://github.com/capeprivacy/pycape) and [serdio.lift_io](https://pydocs.capeprivacy.com/serdio.io_lifter.html#serdio.io_lifter.lift_io) to handle automatic serialization/deserialization of Cape function input/outputs. You can learn how to deploy this function by checking the folder [np-stats](./np-stats/). You can run the function as follow after install installing in a virtual environment in `np-stats/requirements.txt`:
 
-### pendulum
-In this example, we show how to run a function requiring a dependency. The function simply returns the current time based on a specific timezone using the [Pendulum](https://pendulum.eustace.io/) library. The dependency is listed in `pendulum/requirements.txt`.
-
-**Build the deployment package:**
 ```
-# Create a deployment folder
-mkdir pendulum-deployment
-# Copy the cape function in the deployment folder
-cp pendulum/app.py pendulum-deployment/.
-# Add pendulum as dependencies using docker
-docker run -v `pwd`:/build -w /build --rm -it python:3.9-slim-bullseye pip install -r pendulum/requirements.txt --target pendulum-deployment/
-```
-**Deploy the function:**
-
-Deploy with the CLI the function as follow:
-```bash
-cape deploy pendulum-deployment/
-```
-
-**Run the function:**
-You can run the function with the cli as follow. Just make sure to use the function id returned by `cape deploy`.
-```
-cape run <YOUR_FUNCTION_ID> Europe/Paris 
-```
-
-### np-stats
-A simple example with numpy dependencies and using [pycape](https://github.com/capeprivacy/pycape) and [serdio.lift_io](https://pydocs.capeprivacy.com/serdio.io_lifter.html#serdio.io_lifter.lift_io) to handle automatic serialization/deserialization of Cape function input/outputs. All commands are run from the repo root directory.
-
-Note the `numpy_serde.py` helper, which defines a custom encoder/decoder bundle that allows `serdio` to handle numpy arrays.
-
-**Build the deployment package:**
-
-```bash
-mkdir np-stats/np-stats-deployment
-cp np-stats/app.py np-stats/numpy_serde.py np-stats/np-stats-deployment/.
-# Add serdio and numpy dependencies using docker
-docker run -v `pwd`:/build -w /build --rm -it python:3.9-slim-bullseye pip install -r np-stats/requirements.txt --target np-stats/np-stats-deployment/
-```
-
-**Deploy the function:**
-
-Deploy with the CLI the function as follow:
-```
-cape deploy np-stats/np-stats-deployment
-```
-Generate the function token based on the function ID and function checksum returned by deploy:
-```
-cape token <FUNCTION_ID> --function-checksum <FUNCTION _CHECKSUM> -o json >  np-stats/numpy_token.json
-```
-
-**Run the function:**
-You can run the function with PyCape as follow:
-```
-export FUNCTION_JSON=np-stats/numpy_token.json
+export TOKEN=<YOUR TOKEN>
+export FUNCTION_ID=capedocs/np-stats
 python np-stats/run.py
 ```
 
-### secure_search
-
-Simulates a cybersecurity search function, where the IP addresses you are interested in need to remain private but the data/logs you are searching might be public. The function defines selectors (IP addresses of interest) as variables:
-```python
-selectors_a = "172.19.0.4"
-selectors_b = "1.2.3.4"
-```
-and accepts a list of json objects containing IP addresses in a "hosts" element:
-```json
-[{"protocol": "tcp", "hosts": "1.2.3.4", "state": "ESTABLISHED"}, {...}]
-```
-It will return True or False for each selector that you are interested in, for each object in the json list:
-```json
-[{"172.19.0.4": false, "1.2.3.4": true}, {...}]
-```
-It uses a user-supplied public key to encrypt the results within the enclave prior to returning them to the caller. Please see:
-* `secure_search/test/generate_keys.py`: for how to generate a keypair.
-* `secure_search/test/test_cape.py`: a sample pycape client which calls the function, receives an encrypted response, and performs decryption using the private key.
+### Secure Search
+Simulates a cybersecurity search function, where the IP addresses you are interested in need to remain private but the data/logs you are searching might be public. You can learn more about this function by checking the folder [secure-search](./secure_search/).
 
 ```
-cape deploy secure_search
+cape run capedocs/secure-search  -f secure_search/input.search.data
 ```
 
+### Leader Election
+Demos how a secure trusted execution environment like Cape can be leveraged in consensus in order to guarantee fairness. Details on how to run this example can be found
+[here](./leader-election).
+
+
+### Hide-and-seek
+To learn more about the confidential hide-and-seek example, you can check the folder [hide_and_seek](./hide_and_seek).
+
+
+### Mortgage
+This application is a mortgage calculator that computes if an applicant is eligible for a mortgage. To learn how to deploy this application, you can check out the folder (mortgage)[./mortgage]. To call this function, you can run:
 ```
-cape run <YOUR_FUNCTION_ID> -f input.search.data
+cape run capedocs/mortgage -f mortgage/input.mortgage.json
 ```
 
-### leader_election
-Demos how secure trusted execution environment like Cape can be leveraged in consensus in order to gurantee fairness. Details on how to run this example can be found
-[here](https://github.com/capeprivacy/functions/tree/main/leader-election)
+## Machine Learning examples
+
+### Image Classification Inference with ONNX
+
+To learn how you can deploy and invoke an image classification model using the [onnxruntime](https://onnxruntime.ai/), you can check the [capeprivacy/image-classification-onnx](image-classification-onnxhttps://github.com/capeprivacy/image-classification-onnx) repository.
+
+
+### Image Classification with tflite
+This example demonstrates how to deploy and invoke an image classification model with [tflite](https://www.tensorflow.org/lite). To learn how to deploy this application, you can check out the folder [image-classification](./image_recognition). To invoke the model, run:
+
+```
+cape run capedocs/image-recognition -f image_recognition/coffee.jpg
+
+('Image Label is :', 'espresso', ', with Accuracy :', 84.38, '%.')
+```
+
+### Sentiment analysis with tflite
+This example demonstrates how you can deploy and invoke a sentiment analysis model with [tflite](https://www.tensorflow.org/lite). To learn how to deploy this application, you can check out the folder [sentiment_analysis](./sentiment_analysis). To invoke the model, simply run:
+
+```
+cape run capedocs/sentiment-analysis -f sentiment_analysis/input.pos.data
+
+('The sentiment is: ', 'positive', ' with a probability of ', 78.08290123939514, '%.')
+```
+
+### Training and Inference with Scikit-Learn.
+You can check the following examples to learn about how to deploying and invoke machine learning models with Scikit-Learn:
+- [credit_card_fraud_detection](./credit_card_fraud_detection/): performs secure inference to classify credit card transactions as fraudulent or legitimate.
+- [logistic_regression_sklearn](./logistic_regression_sklearn/): securely train an Sklearn logistic regression model on the breast cancer dataset.
+- [batch_training](./batch_training/): shows how to perform batch training with Sklearn model.
+
+
+# Invoke Cape's Confidential Services
+### Invoke Cape's Confidential OCR Service from SDKs
+
+This example shows you how you can run the [Cape's confidential optical character recognition service](https://docs.capeprivacy.com/cape-hosted/ocr)) from the SDKs: [cape-js](https://docs.capeprivacy.com/sdks/javascript-sdk) and [pycape](https://pydocs.capeprivacy.com/).
+
+For this example, we will run the OCR on the PDF `./ocr/claude_shannon.pdf`.
+
+**From cape-js:**
+
+Before invoking the OCR, set the environment variable `CAPE_AUTH_TOKEN` to your [personal access token](https://docs.capeprivacy.com/reference/user-tokens). 
+```
+export CAPE_AUTH_TOKEN="your cape auth token"
+```
+
+To run the OCR from cape-js on the PDF, from the [ocr folder](./ocr), run:
+```
+node run_ocr.mjs
+```
+
+To encrypt the PDF with [cape.encrypt](https://docs.capeprivacy.com/tutorials/encrypting#cape-encrypt), then invoke the OCR on the encrypted PDF, run:
+```
+node encrypt_run_ocr.mjs
+```
+
+**From pycape:**
+
+Before invoking the OCR, set the environment variable `CAPE_AUTH_TOKEN` to your [personal access token](https://docs.capeprivacy.com/reference/user-tokens). 
+
+```
+export CAPE_AUTH_TOKEN="your cape auth token"
+```
+
+To run the OCR from pycape on the PDF, from the [ocr folder](./ocr), run:
+```
+python run_ocr.py
+```
+
+To encrypt the PDF with [cape.encrypt](https://docs.capeprivacy.com/tutorials/encrypting#cape-encrypt), then invoke the OCR on the encrypted PDF, run:
+```
+python encrypt_run_ocr.py
+```
+
+ 
