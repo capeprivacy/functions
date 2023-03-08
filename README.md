@@ -99,4 +99,47 @@ You can check the following examples to learn about how to deploying and invoke 
 - [logistic_regression_sklearn](./logistic_regression_sklearn/): securely train an Sklearn logistic regression model on the breast cancer dataset.
 - [batch_training](./batch_training/): shows how to perform batch training with Sklearn model.
 
+
+# Invoke Cape's Confidential Services
+### Invoke Cape's Confidential OCR Service from SDKs
+
+This example shows you how you can run the [Cape's confidential optical character recognition service](https://docs.capeprivacy.com/cape-hosted/ocr)) from the SDKs: [cape-js](https://docs.capeprivacy.com/sdks/javascript-sdk) and [pycape](https://pydocs.capeprivacy.com/).
+
+For this example, we will run the OCR on the PDF `./ocr/claude_shannon.pdf`.
+
+**From cape-js:**
+
+Before invoking the OCR, set the environment variable `CAPE_AUTH_TOKEN` to your [personal access token](https://docs.capeprivacy.com/reference/user-tokens). 
+```
+export CAPE_AUTH_TOKEN="your cape auth token"
+```
+
+To run the OCR from cape-js on the PDF, from the [ocr folder](./ocr), run:
+```
+node run_ocr.mjs
+```
+
+To encrypt the PDF with [cape.encrypt](https://docs.capeprivacy.com/tutorials/encrypting#cape-encrypt), then invoke the OCR on the encrypted PDF, run:
+```
+node encrypt_run_ocr.mjs
+```
+
+**From pycape:**
+
+Before invoking the OCR, set the environment variable `CAPE_AUTH_TOKEN` to your [personal access token](https://docs.capeprivacy.com/reference/user-tokens). 
+
+```
+export CAPE_AUTH_TOKEN="your cape auth token"
+```
+
+To run the OCR from pycape on the PDF, from the [ocr folder](./ocr), run:
+```
+python run_ocr.py
+```
+
+To encrypt the PDF with [cape.encrypt](https://docs.capeprivacy.com/tutorials/encrypting#cape-encrypt), then invoke the OCR on the encrypted PDF, run:
+```
+python encrypt_run_ocr.py
+```
+
  

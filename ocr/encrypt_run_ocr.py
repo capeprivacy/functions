@@ -20,13 +20,18 @@ cape = Cape(url="wss://xlarge.capeprivacy.com")
 # cape token create --name ocr
 t = cape.token(auth_token_env)
 
+# Encrypt your PDF with cape.encrypt. When invoking this method, by default,
+# the SDK will retrieve the public encryption key associated with
+# your account
+encrypted_pdf = cape.encrypt(pdf)
+
 # Select the Cape function you would like to invoke.
 # Since we want invoke the ocr service, set the function ID
 # to "capedocs/ocr-doctr-onnx-1.0"
 f = cape.function("capedocs/ocr-doctr-onnx-1.0")
 
 # Invoke the OCR service
-result = cape.run(f, t, pdf)
+result = cape.run(f, t, encrypted_pdf)
 
 # Print the transcript
 print(f"OCR transcript: {json.loads(result)['ocr_transcript']}")
