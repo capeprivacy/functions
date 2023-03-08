@@ -84,7 +84,7 @@ cape run capedocs/image-recognition -f image_recognition/coffee.jpg
 ('Image Label is :', 'espresso', ', with Accuracy :', 84.38, '%.')
 ```
 
-### Sentiment Analysis with tflite
+### Sentiment Analysis Inference with tflite
 This example demonstrates how you can deploy and invoke a sentiment analysis model with [tflite](https://www.tensorflow.org/lite). To learn how to deploy this application, you can check out the folder [sentiment_analysis](./sentiment_analysis). To invoke the model, simply run:
 
 ```
