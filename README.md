@@ -63,19 +63,19 @@ To learn more about the confidential hide-and-seek example, you can check the fo
 
 
 ### Mortgage
-This application is a mortgage calculator that computes if an applicant is eligible for a mortgage. To learn how to deploy this application, you can check out the folder (mortgage)[./mortgage]. To call this function, you can run:
+This application is a mortgage calculator that computes if an applicant is eligible for a mortgage. To learn how to deploy this application, you can check out the folder [mortgage](./mortgage). To call this function, you can run:
 ```
 cape run capedocs/mortgage -f mortgage/input.mortgage.json
 ```
 
-## Machine Learning examples
+## Machine Learning Examples
 
 ### Image Classification Inference with ONNX
 
 To learn how you can deploy and invoke an image classification model using the [onnxruntime](https://onnxruntime.ai/), you can check the [capeprivacy/image-classification-onnx](image-classification-onnxhttps://github.com/capeprivacy/image-classification-onnx) repository.
 
 
-### Image Classification with tflite
+### Image Classification Inference with tflite
 This example demonstrates how to deploy and invoke an image classification model with [tflite](https://www.tensorflow.org/lite). To learn how to deploy this application, you can check out the folder [image-classification](./image_recognition). To invoke the model, run:
 
 ```
@@ -84,7 +84,7 @@ cape run capedocs/image-recognition -f image_recognition/coffee.jpg
 ('Image Label is :', 'espresso', ', with Accuracy :', 84.38, '%.')
 ```
 
-### Sentiment analysis with tflite
+### Sentiment Analysis Inference with tflite
 This example demonstrates how you can deploy and invoke a sentiment analysis model with [tflite](https://www.tensorflow.org/lite). To learn how to deploy this application, you can check out the folder [sentiment_analysis](./sentiment_analysis). To invoke the model, simply run:
 
 ```
@@ -103,7 +103,7 @@ You can check the following examples to learn about how to deploying and invoke 
 # Invoke Cape's Confidential Services
 ### Invoke Cape's Confidential OCR Service from SDKs
 
-This example shows you how you can run the [Cape's confidential optical character recognition service](https://docs.capeprivacy.com/cape-hosted/ocr)) from the SDKs: [cape-js](https://docs.capeprivacy.com/sdks/javascript-sdk) and [pycape](https://pydocs.capeprivacy.com/).
+This example shows you how you can run the [Cape's confidential optical character recognition service](https://docs.capeprivacy.com/cape-hosted/ocr) from the SDKs: [cape-js](https://docs.capeprivacy.com/sdks/javascript-sdk) and [pycape](https://pydocs.capeprivacy.com/).
 
 For this example, we will run the OCR on the PDF `./ocr/claude_shannon.pdf`.
 
