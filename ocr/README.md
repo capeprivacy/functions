@@ -1,6 +1,6 @@
 # Invoke Cape's Confidential OCR Service from SDKs
 
-This folder shows you how you can run the [Cape's confidential optical character recognition service](https://docs.capeprivacy.com/cape-hosted/ocr)) from the SDKs: [cape-js](https://docs.capeprivacy.com/sdks/javascript-sdk) and [pycape](https://pydocs.capeprivacy.com/).
+This folder shows you how you can run the [Cape's confidential optical character recognition service](https://docs.capeprivacy.com/cape-hosted/ocr) from the SDKs: [cape-js](https://docs.capeprivacy.com/sdks/javascript-sdk) and [pycape](https://pydocs.capeprivacy.com/).
 
 Before invoking the OCR service from one of the SDKs, you must [sign up](https://docs.capeprivacy.com/getting-started#sign-up-for-cape) with Cape and generate a [personal access token](https://docs.capeprivacy.com/reference/user-tokens).
 
