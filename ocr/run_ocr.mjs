@@ -25,12 +25,12 @@ const pdf = fs.readFileSync("./Claude_Shannon.pdf");
 const authToken = process.env.CAPE_AUTH_TOKEN;
 
 // Instantiate a Cape object with your auth token and the URL 
-// "wss://xlarge.capeprivacy.com". Setting the URL to wss://xlarge.capeprivacy.com 
+// "wss://ocr.capeprivacy.com". Setting the URL to "wss://ocr.capeprivacy.com" 
 // will guarantee the OCR model is deployed to larger instances with required 
 // dependencies. 
 const cape = new Cape({
     authToken,
-    enclaveUrl: "wss://xlarge.capeprivacy.com",
+    enclaveUrl: "wss://ocr.capeprivacy.com",
 });
 
 try {
