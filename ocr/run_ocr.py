@@ -11,10 +11,10 @@ user_name_env = os.environ.get("USERNAME")
 with open("Claude_Shannon.pdf", "rb") as f:
     pdf = f.read()
 
-# Instantiate a Cape object with the URL "wss://xlarge.capeprivacy.com".
-# Setting the URL to wss://xlarge.capeprivacy.com will guarantee the OCR model is
+# Instantiate a Cape object with the URL "wss://ocr.capeprivacy.com".
+# Setting the URL to "wss://ocr.capeprivacy.com.com" will guarantee the OCR model is
 # deployed to larger instances with required dependencies.
-cape = Cape(url="wss://xlarge.capeprivacy.com")
+cape = Cape(url="wss://ocr.capeprivacy.com")
 
 # Get a personal access token from the UI or the CLI with
 # cape token create --name ocr
