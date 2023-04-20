@@ -16,7 +16,7 @@ cape token create --name my-token --description 'for use in the javascript sdk'
 
 ### Echo
 
-A simple function that returns whatever you send it. Check out the folder [echo](.echo/) to learn how to deploy this function. To invoke this function, you can run the following:
+A simple function that returns whatever you send it. Check out the folder [echo](./echo/) to learn how to deploy this function. To invoke this function, you can run the following:
 
 ```
 cape run capedocs/echo -f echo/input.echo.data
@@ -24,7 +24,7 @@ cape run capedocs/echo -f echo/input.echo.data
 
 ### Isprime
 
-A simple function checking if your number is prime or not. Check out the folder [isprime](.isprime/) to learn how to deploy this function. To invoke this function, you can run the following:
+A simple function checking if your number is prime or not. Check out the folder [isprime](./isprime/) to learn how to deploy this function. To invoke this function, you can run the following:
 
 ```
 cape run capedocs/isprime -f isprime/input.isprime.data
