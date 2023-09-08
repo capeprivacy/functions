@@ -1,0 +1,4 @@
+PyMuPDF==1.22.5
+python-pptx==0.6.21
+docx2txt==0.8
+pandas==2.0.0
